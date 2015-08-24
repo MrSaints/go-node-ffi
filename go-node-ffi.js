@@ -2,7 +2,7 @@ var FFI = require("ffi");
 var Ref = require("ref");
 var Struct = require("ref-struct");
 
-var hw_path = "/home/mrsaints/Workspace/golang/src/github.com/mrsaints/go-helloworld/go-helloworld";
+var hw_path = "/home/mrsaints/Workspace/golang/src/github.com/mrsaints/go-node-ffi/go-node-ffi";
 
 /*
  * GoString ABI-compliant struct

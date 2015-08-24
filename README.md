@@ -23,14 +23,14 @@ Simply put, let's try calling Go functions from JavaScript.
 # Building
 
 ```shell
-go build -buildmode=c-shared -o go-helloworld.so
+go build -buildmode=c-shared -o go-node-ffi.so
 ```
 
 
 # Running
 
-Tinker with the sample file `helloworld.js` by running:
+Tinker with the sample file `go-node-ffi.js` by running:
 
 ```shell
-node helloworld.js
+node go-node-ffi.js
 ```

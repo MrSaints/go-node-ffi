@@ -1,6 +1,6 @@
 /* Created by "go tool cgo" - DO NOT EDIT. */
 
-/* package github.com/mrsaints/go-helloworld */
+/* package github.com/mrsaints/go-node-ffi */
 
 /* Start of preamble from import "C" comments.  */
 
