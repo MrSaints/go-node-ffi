@@ -2,6 +2,8 @@
 
 An experiment using [Go 1.5](https://blog.golang.org/go1.5) [buildmode](https://golang.org/s/execmodes) to compile shared C libraries, and to subsequently access them through NodeJS bindings via [node-ffi](https://github.com/node-ffi/node-ffi).
 
+Simply put, let's try calling Go functions from JavaScript.
+
 
 # Installation
 
