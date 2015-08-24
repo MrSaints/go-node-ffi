@@ -50,7 +50,11 @@ extern "C" {
 #endif
 
 
-extern void HelloWorld();
+extern GoString HelloWorld();
+
+extern GoString Greet(GoString p0);
+
+extern GoInt Add(GoInt p0, GoInt p1);
 
 #ifdef __cplusplus
 }
