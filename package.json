@@ -1,0 +1,25 @@
+{
+  "name": "go-node-ffi",
+  "version": "1.0.0",
+  "description": "An experiment using Go 1.5 buildmode to compile shared C libraries, and to subsequently access them through NodeJS bindings via node-ffi.",
+  "main": "helloworld.js",
+  "devDependencies": {
+    "ffi": "^1.3.2",
+    "ref": "^1.0.2",
+    "ref-struct": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrSaints/go-node-ffi.git"
+  },
+  "author": "Ian Lai <ian@fyianlai.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrSaints/go-node-ffi/issues"
+  },
+  "homepage": "https://github.com/MrSaints/go-node-ffi#readme"
+}
