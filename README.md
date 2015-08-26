@@ -5,7 +5,7 @@ An experiment using [Go 1.5](https://blog.golang.org/go1.5) [buildmode](https://
 Simply put, let's try calling Go functions from JavaScript.
 
 
-# Installation
+## Installation
 
 1. Download, and install the package:
 
@@ -20,14 +20,14 @@ Simply put, let's try calling Go functions from JavaScript.
     ```
 
 
-# Building
+## Building
 
 ```shell
 go build -buildmode=c-shared -o go-node-ffi.so
 ```
 
 
-# Running
+## Running
 
 Tinker with the sample file `go-node-ffi.js` by running:
 
