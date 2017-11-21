@@ -2,35 +2,39 @@ var FFI = require("ffi");
 var Ref = require("ref");
 var Struct = require("ref-struct");
 
-var hw_path = "/home/mrsaints/Workspace/golang/src/github.com/mrsaints/go-node-ffi/go-node-ffi";
+var hw_path = "./go-node-ffi";
 
 /*
  * GoString ABI-compliant struct
  */
 var GoString = Struct({
-    p: "char *",
-    n: "int"
+    p: "string",
+    n: "int",
 });
 
 function NewGoString(v) {
     var _gs = new GoString();
-    _gs.p = Ref.allocCString(v);
+    _gs.p = v
     _gs.n = v.length;
     return _gs;
 }
 
+function GoStringToJsString(gostring) {
+  return gostring.p.slice(0, gostring.n)
+}
+
 var hw = FFI.Library(hw_path, {
-  "HelloWorld": ["string", []],
-  "Greet": ["string", [GoString]],
+  "HelloWorld": [GoString, []],
+  "Greet": [GoString, [GoString]],
   "Add": ["int", ["int", "int"]]
 });
 
 var helloWorld = hw.HelloWorld();
-console.log(helloWorld);
+console.log(GoStringToJsString(helloWorld));
 
 var addition = hw.Add(2, 4);
 console.log(addition);
 
 var john = NewGoString("John");
 var greeting = hw.Greet(john);
-console.log(greeting);
+console.log(GoStringToJsString(greeting));
