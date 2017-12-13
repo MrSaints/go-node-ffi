@@ -1,36 +1,46 @@
-var FFI = require("ffi");
-var Ref = require("ref");
-var Struct = require("ref-struct");
+const FFI = require("ffi");
+const Ref = require("ref");
+const Struct = require("ref-struct");
 
-var hw_path = "/home/mrsaints/Workspace/golang/src/github.com/mrsaints/go-node-ffi/go-node-ffi";
+const hwSharedLibPath = "./go-node-ffi";
 
 /*
  * GoString ABI-compliant struct
+ * See https://github.com/golang/go/wiki/cgo#go-strings-and-c-strings
  */
-var GoString = Struct({
-    p: "char *",
-    n: "int"
+const goString = Struct({
+    p: "string",
+    n: "long",
 });
 
-function NewGoString(v) {
-    var _gs = new GoString();
-    _gs.p = Ref.allocCString(v);
-    _gs.n = v.length;
-    return _gs;
+class GoString extends goString {
+    // GoString (cgo) -> JavaScript string
+    static get(buffer, offset) {
+        const _gs = goString.get(buffer, offset);
+        return _gs.p.slice(0, _gs.n);
+    }
+
+    // JavaScript string -> GoString (cgo)
+    static set(buffer, offset, value) {
+        const _gs = new goString({
+            p: value,
+            n: value.length,
+        });
+        return goString.set(buffer, offset, _gs);
+    }
 }
 
-var hw = FFI.Library(hw_path, {
-  "HelloWorld": ["string", []],
-  "Greet": ["string", [GoString]],
-  "Add": ["int", ["int", "int"]]
+const hw = FFI.Library(hwSharedLibPath, {
+    HelloWorld: [GoString, []],
+    Greet: [GoString, [GoString]],
+    Add: ["int", ["int", "int"]],
 });
 
-var helloWorld = hw.HelloWorld();
+const helloWorld = hw.HelloWorld();
 console.log(helloWorld);
 
-var addition = hw.Add(2, 4);
+const addition = hw.Add(2, 4);
 console.log(addition);
 
-var john = NewGoString("John");
-var greeting = hw.Greet(john);
+const greeting = hw.Greet("John");
 console.log(greeting);

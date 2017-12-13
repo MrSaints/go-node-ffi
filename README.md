@@ -4,6 +4,8 @@ An experiment using [Go 1.5](https://blog.golang.org/go1.5) [buildmode](https://
 
 Simply put, let's try calling Go functions from JavaScript.
 
+Tested with `go1.9.1`, and Node `v7.8.0`.
+
 
 ## Installation
 
@@ -13,9 +15,12 @@ Simply put, let's try calling Go functions from JavaScript.
     go get github.com/mrsaints/go-node-ffi
     ```
 
-2. Install npm dependencies:
+2. Install NPM dependencies:
 
     ```shell
+    yarn
+
+    // OR...
     npm install
     ```
 
@@ -23,14 +28,31 @@ Simply put, let's try calling Go functions from JavaScript.
 ## Building
 
 ```shell
+yarn build
+
+// OR...
 go build -buildmode=c-shared -o go-node-ffi.so
 ```
 
 
 ## Running
 
-Tinker with the sample file `go-node-ffi.js` by running:
+Tinker with the sample file `go-node-ffi.js`, and run:
 
 ```shell
+yarn start
+
+// OR...
 node go-node-ffi.js
 ```
+
+
+## Debugging
+
+Enable verbose logging:
+
+```
+export DEBUG="ref,ref:struct"
+```
+
+Now, run the program (see above).
