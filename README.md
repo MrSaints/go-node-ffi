@@ -4,7 +4,7 @@ An experiment using [Go 1.5](https://blog.golang.org/go1.5) [buildmode](https://
 
 Simply put, let's try calling Go functions from JavaScript.
 
-Tested with `go1.9.1`, and Node `v7.8.0`.
+Tested with `go1.16`, and Node `v14.16`. For older versions, see tagged releases.
 
 
 ## Installation

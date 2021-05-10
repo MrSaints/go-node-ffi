@@ -1,27 +1,25 @@
 {
     "name": "go-node-ffi",
-    "version": "2.0.0",
-    "description":
-        "An experiment using Go 1.5 buildmode to compile shared C libraries, and to subsequently access them through NodeJS bindings via node-ffi.",
+    "version": "3.0.0",
+    "description": "An experiment using Go 1.5 buildmode to compile shared C libraries, and to subsequently access them through NodeJS bindings via node-ffi.",
     "main": "go-node-ffi.js",
     "private": true,
     "engines": {
-      "node": ">=7.8.0"
+        "node": ">=14.16"
     },
     "dependencies": {
-        "ffi": "^2.2.0",
-        "ref": "^1.0.2",
-        "ref-struct": "^1.0.1"
+        "ffi-napi": "^4.0.3",
+        "ref-napi": "^3.0.2",
+        "ref-struct-di": "^1.1.1"
     },
     "devDependencies": {
-        "prettier": "^1.9.2"
+        "prettier": "^2.3.0"
     },
     "scripts": {
         "build": "go build -buildmode=c-shared -o go-node-ffi.so",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node go-node-ffi.js",
-        "fmt":
-            "prettier --write *.js && prettier --parser json --write *.json .prettierrc"
+        "start": "GODEBUG=cgocheck=0 node go-node-ffi.js",
+        "fmt": "prettier --write *.js && prettier --parser json --write *.json .prettierrc"
     },
     "repository": {
         "type": "git",
