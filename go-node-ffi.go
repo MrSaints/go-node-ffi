@@ -16,7 +16,7 @@ func HelloWorld() string {
 
 //export Greet
 func Greet(name string) string {
-	return fmt.Sprintf("Greetings %s!\n", name)
+	return fmt.Sprintf("Greetings %s!\n", string(name))
 }
 
 //export Add

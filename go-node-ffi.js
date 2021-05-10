@@ -1,6 +1,6 @@
-const FFI = require("ffi");
-const Ref = require("ref");
-const Struct = require("ref-struct");
+const FFI = require("ffi-napi");
+const Ref = require("ref-napi");
+const Struct = require("ref-struct-di")(Ref);
 
 const hwSharedLibPath = "./go-node-ffi";
 
@@ -10,7 +10,7 @@ const hwSharedLibPath = "./go-node-ffi";
  */
 const goString = Struct({
     p: "string",
-    n: "long",
+    n: "longlong",
 });
 
 class GoString extends goString {
